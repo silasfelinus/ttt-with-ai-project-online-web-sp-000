@@ -2,10 +2,35 @@
 
 require_relative '../config/environment'
 
+puts "Would you like to play a game?"
+puts "[0], [1], [2] players?"
+valid_moves = ["0", "1", "2", "wargames"]
+until valid_moves.include?(selection = gets.chomp)
+  puts 'Please enter a valid selection ["0", "1", "2","wargames"]'
+end
+
+case selection
+when "0"
+  puts "Boto el Boto! My money's on the computer!"
+
+when "1"
+  puts "A human versus a computer?"
+  puts "Never since Deep Blue and Kasparov has there been such a match!"
+
+
+when "2"
+  puts "Human versus Human"
+  puts "Honestly, I have trouble telling you meatbags apart anyway."
+
+when "wargames"
+  puts "Ready to play Global Thermonuclear war"
+
+else puts "you shouldn't be reading this"
+
+end
 
 =begin
-Greet the user with a message.
-Prompt the user for what kind of game they want to play, 0,1, or 2 player.
+
 Ask the user for who should go first and be "X".
 Use the input to correctly initialize a Game with the appropriate player types and token values.
 

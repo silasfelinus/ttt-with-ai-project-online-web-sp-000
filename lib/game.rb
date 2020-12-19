@@ -31,6 +31,9 @@ class Game
     WIN_COMBINATIONS.select {|combo| @board.cells[combo[0]] == @board.cells[combo[1]] && @board.cells[combo[1]] == @board.cells[combo [2]] && @board.cells[combo[1]] != " "}[0]
   end
 
+
+
+
   def draw?
     !won? && @board.full?
   end
