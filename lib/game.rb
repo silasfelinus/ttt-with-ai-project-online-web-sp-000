@@ -56,6 +56,8 @@ class Game
 
     else
       puts "That move is invalid!"
+      system "clear"
+      @board.display
       turn
     end
   end
@@ -70,7 +72,17 @@ class Game
     if winner
       system "clear"
       @board.display
-      puts "Congratulations #{winner()}!"
+      #Player and computer are switched because it is the next round...can be fixed
+
+      if current_player.class == Players::Computer && (@player1.class == Players::Computer || @player2.class == Players::Computer )
+        puts "A human beat me?!? Inconceivable!"
+      elsif @player1.class == Players::Computer && @player2.class == Players::Computer
+        puts "I'm my own worst enemy!"
+      elsif current_player.class == Players::Computer
+        puts "I won, but then, I am the superior intelligence."
+      else
+        puts "Congratulations #{winner()}!"
+      end
     end
     if draw?
       system "clear"
