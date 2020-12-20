@@ -4,28 +4,34 @@ module Players
 
     def move(board)
       #Can I win?
-      if optimal_move(board, self.token)
+      choice = if optimal_move(board, self.token)
+        puts "I stopped here"
         optimal_move(board, self.token)
       elsif optimal_move(board, self.opponent_token)
+        puts "no here"
         optimal_move(board, self.opponent_token)
-      elsif board.cells[5] == " "
-        "5"
-      elsif board.cells[1] == " "
-        "1"
-      elsif board.cells[3] == " "
-        "3"
-      elsif board.cells[7] == " "
-        "7"
-      elsif board.cells[9] == " "
-        "9"
-      elsif board.cells[2] == " "
-        "2"
       elsif board.cells[4] == " "
-        "4"
+        "5"
+      elsif board.cells[0] == " "
+        "1"
+      elsif board.cells[2] == " "
+        "3"
       elsif board.cells[6] == " "
+        "7"
+      elsif board.cells[8] == " "
+        "9"
+      elsif board.cells[1] == " "
+        "2"
+      elsif board.cells[3] == " "
+        "4"
+      elsif board.cells[5] == " "
         "6"
       else "8"
       end
+      system "clear"
+      @board.display
+      puts "In my infinite wisdom, I choose to go to #{choice}"
+      choice
 
     end
 

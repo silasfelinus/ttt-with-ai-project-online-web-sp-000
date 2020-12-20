@@ -53,7 +53,7 @@ class Game
     index = current_player.move(@board)
     if @board.valid_move?(index)
       @board.update(index, current_player)
-      @board.display
+
     else
       puts "That move is invalid!"
       turn
@@ -61,14 +61,20 @@ class Game
   end
 
   def play
+    system "clear"
     until over?
+      @board.display
       turn
     end
 
     if winner
+      system "clear"
+      @board.display
       puts "Congratulations #{winner()}!"
     end
     if draw?
+      system "clear"
+      @board.display
       puts "Cat's Game!"
     end
   end
