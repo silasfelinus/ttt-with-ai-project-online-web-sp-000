@@ -74,9 +74,8 @@ class Game
     if winner
       system "clear"
       @board.display
-      #Player and computer are switched because it is the next round...can be fixed
 
-      if current_player.class == Players::Computer && (@player1.class == Players::Computer || @player2.class == Players::Computer )
+      if current_player.class == Players::Player && (@player1.class == Players::Computer || @player2.class == Players::Computer )
         puts "A human beat me?!? Inconceivable!"
       elsif @player1.class == Players::Computer && @player2.class == Players::Computer
         puts "I'm my own worst enemy!"
