@@ -2,7 +2,17 @@
 
 require_relative '../config/environment'
 
+
+  def title
+    puts "___________.__                   ___________                         ___________"
+    puts "\__    ___/|__| ____             \__    ___/____    ____             \__    ___/___   ____"
+    puts "  |    |   |  |/ ___\    ______    |    |  \__  \ _/ ___\    ______    |    | /  _ \_/ __\\"
+    puts '  |    |   |  \  \___   /_____/    |    |   / __ \\  \___   /_____/    |    |(  <_> )  ___/'
+    puts "  |____|   |__|\_____>             |____|  (____  /\_____>             |____| \____/ \_____>"
+  end
+
 system "clear"
+title
 puts "Would you like to play a game?"
 puts "[0], [1], [2] players?"
 valid_moves = ["0", "1", "2", "wargames"]
