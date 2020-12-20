@@ -12,6 +12,14 @@ class Game
   [2,4,6]  # forwardslash diagonal
   ]
 
+  def title
+    puts "___________.__                   ___________                         ___________"            
+    puts "\__    ___/|__| ____             \__    ___/____    ____             \__    ___/___   ____"  
+    puts "  |    |   |  |/ ___\    ______    |    |  \__  \ _/ ___\    ______    |    | /  _ \_/ __\\"
+    puts '  |    |   |  \  \___   /_____/    |    |   / __ \\  \___   /_____/    |    |(  <_> )  ___/'
+    puts "  |____|   |__|\_____>             |____|  (____  /\_____>             |____| \____/ \_____>"
+
+
   def initialize(player_1 = Players::Human.new("X"), player_2 = Players::Human.new("O"), board = Board.new)
     @player_1 = player_1
     @player_2 = player_2
