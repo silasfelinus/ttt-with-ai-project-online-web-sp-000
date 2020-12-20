@@ -18,6 +18,7 @@ class Game
     puts "  |    |   |  |/ ___\    ______    |    |  \__  \ _/ ___\    ______    |    | /  _ \_/ __\\"
     puts '  |    |   |  \  \___   /_____/    |    |   / __ \\  \___   /_____/    |    |(  <_> )  ___/'
     puts "  |____|   |__|\_____>             |____|  (____  /\_____>             |____| \____/ \_____>"
+  end
 
 
   def initialize(player_1 = Players::Human.new("X"), player_2 = Players::Human.new("O"), board = Board.new)
@@ -72,6 +73,7 @@ class Game
 
   def play
     system "clear"
+    title
     until over?
       @board.display
       turn
