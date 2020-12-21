@@ -61,15 +61,24 @@ while game_on == true
 
   when "wargames"
     puts "Ready to play Global Thermonuclear war"
+      array =  do 100.times {
     player1 = Players::Computer.new("X")
     player2 = Players::Computer.new("O")
+    game = Game.new(player1, player2)
+    game.play
+  }
+  puts array
+    
+
+
 
   else
     puts "Something went wrong. You shouldn't be reading this."
   end
-
-  game = Game.new(player1, player2)
-  game.play
+  if selection != "wargames"
+    game = Game.new(player1, player2)
+    game.play
+  end
 
   puts "Press a key to play again."
   puts "type q to quit"
