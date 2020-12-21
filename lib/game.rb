@@ -57,9 +57,9 @@ class Game
       @board.update(index, current_player)
 
     else
-      puts "That move is invalid!"
       system "clear"
       @board.display
+      puts "That move is invalid!"
       turn
     end
   end
