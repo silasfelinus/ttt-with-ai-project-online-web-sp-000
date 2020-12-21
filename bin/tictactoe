@@ -68,9 +68,12 @@ while game_on == true
     game = Game.new(player1, player2)
     outcomes << game.play
   }
-  if outcomes.select {|outcome| outcome == "draw"}.length() == 100
+
+  draws = outcomes.select {|outcome| outcome == "draw"}.length()
+  if draws == 100
     puts "Just as I thought!"
-    puts "I just can't win!"
+    puts "I drew #{draws} times."
+    puts "I'm too good to lose!"
   else
     puts "That's weird!"
     puts "I should be smarter than this."
