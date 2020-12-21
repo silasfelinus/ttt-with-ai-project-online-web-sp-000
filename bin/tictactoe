@@ -68,8 +68,13 @@ while game_on == true
     game = Game.new(player1, player2)
     outcomes << game.play
   }
-  puts "I didn't expect that:"
-  puts outcomes
+  if outcomes.select {outcome} outcome == "draw"}.length() == 100
+    puts "Just as I thought!"
+    puts "I just can't win!"
+  else
+    puts "That's weird!"
+    puts "I should be smarter than this."
+  ends
 
 
 
