@@ -68,7 +68,7 @@ while game_on == true
     game.play
   }
   puts array
-    
+
 
 
 
