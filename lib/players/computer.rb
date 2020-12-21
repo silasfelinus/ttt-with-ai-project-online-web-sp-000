@@ -37,7 +37,6 @@ module Players
 
     def optimal_move(board, token)
       #returns a moveset that is one piece away from victory"
-      binding.pry
       choice = Game::WIN_COMBINATIONS.select {|combo|
         board.cells[combo[0]] == token && board.cells[combo[1]] == token && board.cells[combo[2]] == " " ||
         board.cells[combo[0]] == token && board.cells[combo[1]] == " " && board.cells[combo[2]] == token ||
