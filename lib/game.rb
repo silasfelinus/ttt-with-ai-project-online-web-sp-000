@@ -75,9 +75,9 @@ class Game
       system "clear"
       @board.display
 
-      if current_player.class == Players::Computer && (@player1.class == Players::Computer || @player2.class == Players::Computer )
+      if current_player.class == Players::Computer && (@player_1.class == Players::Human || @player_2.class == Players::Human )
         puts "A human beat me?!? Inconceivable!"
-      elsif @player1.class == Players::Computer && @player2.class == Players::Computer
+      elsif @player_1.class == Players::Computer && @player_2.class == Players::Computer
         puts "I'm my own worst enemy!"
       elsif current_player.class == Players::Computer
         puts "I won, but then, I am the superior intelligence."
