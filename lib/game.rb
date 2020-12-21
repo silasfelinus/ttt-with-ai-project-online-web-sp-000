@@ -79,7 +79,7 @@ class Game
         puts "A human beat me?!? Inconceivable!"
       elsif @player_1.class == Players::Computer && @player_2.class == Players::Computer
         puts "I'm my own worst enemy!"
-      elsif current_player.class == Players::Computer
+      elsif current_player.class == Players::Human
         puts "I won, but then, I am the superior intelligence."
       else
         puts "Congratulations #{winner()}!"
