@@ -2,59 +2,98 @@
 
 require_relative '../config/environment'
 
-system "clear"
-puts "Would you like to play a game?"
-puts "[0], [1], [2] players?"
-valid_moves = ["0", "1", "2", "wargames"]
-until valid_moves.include?(selection = gets.chomp)
-  puts 'Please enter a valid selection ["0", "1", "2","wargames"]'
-end
-system "clear"
-@board.display
 
-case selection
-when "0"
-  puts "Boto el Boto! My money's on the computer!"
-  player1 = Players::Computer.new("X")
-  player2 = Players::Computer.new("O")
-
-when "1"
-
-  puts "A human versus a computer?"
-  puts "Never since Deep Blue and Kasparov has there been such a match!"
-  puts "Do you want to be [X] or [O]?"
-  puts "(X goes first) "
-  player_token = " "
-  until player_token.downcase == "x" || player_token.downcase == "o"
-    puts "Please input X or O"
-    player_token = gets.chomp
+  def title
+    puts "___________.__                   ___________                         ___________"
+    puts "\\__    ___/|__| ____             \\__    ___/____    ____             \\__    ___/___   ____"
+    puts "  |    |   |  |/ ___\\    ______    |    |  \\__  \\ _/ ___\\    ______    |    | /  _ \\_/ ___\\"
+    puts '  |    |   |  \  \\___   /_____/    |    |   / __ \\  \\___    /_____/    |    |(  <_> )  ___/'
+    puts "  |____|   |__|\\_____>             |____|  (____  /\\_____>             |____| \\____/ \\_____>"
   end
-  case player_token.downcase
-  when "x"
-    player1 = Players::Human.new("X")
-    player2 = Players::Computer.new("O")
-    puts "You're going first!"
-    puts "Humans need every advantage against me anyway."
-  when "o"
+
+game_on = true
+while game_on == true
+  system "clear"
+  title
+  puts "Would you like to play a game?"
+  puts "[0], [1], [2] players?"
+  valid_moves = ["0", "1", "2", "wargames"]
+  until valid_moves.include?(selection = gets.chomp)
+    puts 'Please enter a valid selection ["0", "1", "2","wargames"]'
+  end
+  system "clear"
+  @board.display
+
+  case selection
+  when "0"
+    puts "Boto el Boto! My money's on the computer!"
     player1 = Players::Computer.new("X")
+    player2 = Players::Computer.new("O")
+
+  when "1"
+
+    puts "A human versus a computer?"
+    puts "Never since Deep Blue and Kasparov has there been such a match!"
+    puts "Do you want to be [X] or [O]?"
+    puts "(X goes first) "
+    player_token = " "
+    until player_token.downcase == "x" || player_token.downcase == "o"
+      puts "Please input X or O"
+      player_token = gets.chomp
+    end
+    case player_token.downcase
+    when "x"
+      player1 = Players::Human.new("X")
+      player2 = Players::Computer.new("O")
+      puts "You're going first!"
+      puts "Humans need every advantage against me anyway."
+    when "o"
+      player1 = Players::Computer.new("X")
+      player2 = Players::Human.new("O")
+      puts "I'm going first!"
+      puts "How chivalrous!"
+    end
+  when "2"
+    puts "Human versus Human"
+    puts "Honestly, I have trouble telling you meatbags apart anyway."
+    player1 = Players::Human.new("X")
     player2 = Players::Human.new("O")
-    puts "I'm going first!"
-    puts "How chivalrous!"
+
+  when "wargames"
+    puts "Ready to play Global Thermonuclear war"
+    outcomes = []
+    100.times {
+    player1 = Players::Computer.new("X")
+    player2 = Players::Computer.new("O")
+    game = Game.new(player1, player2)
+    outcomes << game.play
+  }
+
+  draws = outcomes.select {|outcome| outcome == "draw"}.length()
+  if draws == 100
+    puts "Just as I thought!"
+    puts "I drew #{draws} times."
+    puts "I'm too good to lose!"
+  else
+    puts "That's weird!"
+    puts "I should be smarter than this."
   end
-when "2"
-  puts "Human versus Human"
-  puts "Honestly, I have trouble telling you meatbags apart anyway."
-  player1 = Players::Human.new("X")
-  player2 = Players::Human.new("O")
 
-when "wargames"
-  puts "Ready to play Global Thermonuclear war"
-  player1 = Players::Computer.new("X")
-  player2 = Players::Computer.new("O")
 
-else
-  puts "Something went wrong. You shouldn't be reading this."
+
+
+  else
+    puts "Something went wrong. You shouldn't be reading this."
+  end
+  if selection != "wargames"
+    game = Game.new(player1, player2)
+    game.play
+  end
+
+  puts "Press a key to play again."
+  puts "type q to quit"
+  answer = gets.chomp
+  if answer.downcase == "q"
+    game_on = false
+  end
 end
-
-game = Game.new(player1, player2)
-game.play

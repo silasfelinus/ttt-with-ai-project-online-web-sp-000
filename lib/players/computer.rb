@@ -5,10 +5,8 @@ module Players
     def move(board)
       #Can I win?
       choice = if optimal_move(board, self.token)
-        puts "I stopped here"
         optimal_move(board, self.token)
       elsif optimal_move(board, self.opponent_token)
-        puts "no here"
         optimal_move(board, self.opponent_token)
       elsif board.cells[4] == " "
         "5"
@@ -38,21 +36,14 @@ module Players
 
 
     def optimal_move(board, token)
-      #returns a moveset that is one piece away from victory
+      #returns a moveset that is one piece away from victory"
       choice = Game::WIN_COMBINATIONS.select {|combo|
         board.cells[combo[0]] == token && board.cells[combo[1]] == token && board.cells[combo[2]] == " " ||
-        board.cells[combo[0]] == token && board.cells[combo[1]] == " " && board.cells[combo[2]] == token
+        board.cells[combo[0]] == token && board.cells[combo[1]] == " " && board.cells[combo[2]] == token ||
         board.cells[combo[0]] == " " && board.cells[combo[1]] == token && board.cells[combo[2]] == token}
       if choice != []
-        choice.select {|position| board.cells[position] == " "}
+        choice[0].select {|position| board.cells[position] == " "}[0] + 1
       end
     end
   end
 end
-        #Can I win right now?
-
-        #Can I block a win?
-
-        #Can I place a corner?
-
-        #Where can I go?

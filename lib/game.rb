@@ -1,5 +1,5 @@
 class Game
-  attr_accessor :board, :player_1, :player_2
+  attr_accessor :board, :player_1, :player_2, :outcome
 
   WIN_COMBINATIONS = [
   [0,1,2], # Top row
@@ -12,10 +12,13 @@ class Game
   [2,4,6]  # forwardslash diagonal
   ]
 
+
+
   def initialize(player_1 = Players::Human.new("X"), player_2 = Players::Human.new("O"), board = Board.new)
     @player_1 = player_1
     @player_2 = player_2
     @board = board
+    @outcome = "undecided"
   end
 
   def current_player
@@ -55,9 +58,9 @@ class Game
       @board.update(index, current_player)
 
     else
-      puts "That move is invalid!"
       system "clear"
       @board.display
+      puts "That move is invalid!"
       turn
     end
   end
@@ -72,23 +75,27 @@ class Game
     if winner
       system "clear"
       @board.display
-      #Player and computer are switched because it is the next round...can be fixed
-
-      if current_player.class == Players::Computer && (@player1.class == Players::Computer || @player2.class == Players::Computer )
+      #current_player is the loser after a winning move
+      if current_player.class == Players::Computer && (@player_1.class == Players::Human || @player_2.class == Players::Human )
         puts "A human beat me?!? Inconceivable!"
-      elsif @player1.class == Players::Computer && @player2.class == Players::Computer
+      elsif @player_1.class == Players::Computer && @player_2.class == Players::Computer
         puts "I'm my own worst enemy!"
-      elsif current_player.class == Players::Computer
+      elsif current_player.class == Players::Human && (@player_1.class == Players::Computer || @player_2.class == Players::Computer )
         puts "I won, but then, I am the superior intelligence."
       else
         puts "Congratulations #{winner()}!"
       end
+      outcome = (@board.turn_count.to_i % 2) + 1
     end
+
     if draw?
       system "clear"
       @board.display
       puts "Cat's Game!"
+      outcome = "draw"
     end
+
+    outcome
   end
 
 end
