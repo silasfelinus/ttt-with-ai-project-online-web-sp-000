@@ -74,7 +74,7 @@ class Game
     if winner
       system "clear"
       @board.display
-
+      #current_player is the loser after a winning move
       if current_player.class == Players::Computer && (@player_1.class == Players::Human || @player_2.class == Players::Human )
         puts "A human beat me?!? Inconceivable!"
       elsif @player_1.class == Players::Computer && @player_2.class == Players::Computer
