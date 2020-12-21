@@ -61,7 +61,7 @@ while game_on == true
 
   when "wargames"
     puts "Ready to play Global Thermonuclear war"
-      array =  do 100.times {
+      array =  100.times {
     player1 = Players::Computer.new("X")
     player2 = Players::Computer.new("O")
     game = Game.new(player1, player2)
