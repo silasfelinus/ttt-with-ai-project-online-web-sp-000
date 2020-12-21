@@ -43,7 +43,7 @@ module Players
         board.cells[combo[0]] == " " && board.cells[combo[1]] == token && board.cells[combo[2]] == token}
       if choice != []
         binding.pry
-        choice[0].select {|position| board.cells[position] == " "}
+        choice[0].select {|position| board.cells[position] == " "}[0]
       end
     end
   end
