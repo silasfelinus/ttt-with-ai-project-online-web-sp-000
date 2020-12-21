@@ -1,5 +1,5 @@
 class Game
-  attr_accessor :board, :player_1, :player_2
+  attr_accessor :board, :player_1, :player_2, :outcome
 
   WIN_COMBINATIONS = [
   [0,1,2], # Top row
@@ -18,6 +18,7 @@ class Game
     @player_1 = player_1
     @player_2 = player_2
     @board = board
+    @outcome = "undecided"
   end
 
   def current_player
@@ -84,11 +85,15 @@ class Game
       else
         puts "Congratulations #{winner()}!"
       end
+      outcome = (turn_count.to_i % 2) + 1
+      outcome
     end
     if draw?
       system "clear"
       @board.display
       puts "Cat's Game!"
+      outcome = "draw"
+      outcome
     end
   end
 
