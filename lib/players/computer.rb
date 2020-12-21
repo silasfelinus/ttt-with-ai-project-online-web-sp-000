@@ -42,7 +42,8 @@ module Players
         board.cells[combo[0]] == token && board.cells[combo[1]] == " " && board.cells[combo[2]] == token ||
         board.cells[combo[0]] == " " && board.cells[combo[1]] == token && board.cells[combo[2]] == token}
       if choice != []
-        Game::WIN_COMBINATIONS[choice.to_i]
+        binding.pry
+        #Game::WIN_COMBINATIONS[choice]
       end
     end
   end
