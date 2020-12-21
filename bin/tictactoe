@@ -61,13 +61,15 @@ while game_on == true
 
   when "wargames"
     puts "Ready to play Global Thermonuclear war"
-      array =  100.times {
+    outcomes = []
+    100.times {
     player1 = Players::Computer.new("X")
     player2 = Players::Computer.new("O")
     game = Game.new(player1, player2)
-    game.play
+    outcomes << game.play
   }
-  puts array
+  puts "I didn't expect that:"
+  puts outcomes
 
 
 
