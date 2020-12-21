@@ -74,7 +74,7 @@ while game_on == true
   else
     puts "That's weird!"
     puts "I should be smarter than this."
-  ends
+  end
 
 
 
