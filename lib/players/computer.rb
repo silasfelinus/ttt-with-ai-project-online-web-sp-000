@@ -40,7 +40,7 @@ module Players
       binding.pry
       choice = Game::WIN_COMBINATIONS.select {|combo|
         board.cells[combo[0]] == token && board.cells[combo[1]] == token && board.cells[combo[2]] == " " ||
-        board.cells[combo[0]] == token && board.cells[combo[1]] == " " && board.cells[combo[2]] == token
+        board.cells[combo[0]] == token && board.cells[combo[1]] == " " && board.cells[combo[2]] == token ||
         board.cells[combo[0]] == " " && board.cells[combo[1]] == token && board.cells[combo[2]] == token}
       if choice != []
         choice.select {|position| board.cells[position] == " "}
