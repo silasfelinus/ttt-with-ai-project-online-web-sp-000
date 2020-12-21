@@ -85,16 +85,17 @@ class Game
       else
         puts "Congratulations #{winner()}!"
       end
-      outcome = (turn_count.to_i % 2) + 1
-      outcome
+      outcome = (@board.turn_count.to_i % 2) + 1
     end
+
     if draw?
       system "clear"
       @board.display
       puts "Cat's Game!"
       outcome = "draw"
-      outcome
     end
+
+    outcome
   end
 
 end
