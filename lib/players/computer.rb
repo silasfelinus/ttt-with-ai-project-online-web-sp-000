@@ -42,7 +42,7 @@ module Players
         board.cells[combo[0]] == token && board.cells[combo[1]] == " " && board.cells[combo[2]] == token ||
         board.cells[combo[0]] == " " && board.cells[combo[1]] == token && board.cells[combo[2]] == token}
       if choice != []
-        choice[0].select {|position| board.cells[position] == " "}[0]
+        choice[0].select {|position| board.cells[position] == " "}[0] + 1
       end
     end
   end
