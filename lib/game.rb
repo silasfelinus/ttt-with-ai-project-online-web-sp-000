@@ -74,6 +74,7 @@ class Game
     if winner
       system "clear"
       @board.display
+      binding.pry
 
       if current_player.class == Players::Computer && (@player1.class == Players::Computer || @player2.class == Players::Computer )
         puts "A human beat me?!? Inconceivable!"
